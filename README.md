@@ -10,3 +10,8 @@ Lab in Advanced Scalable Machine Learning course at KTH
 ## Binary Classifiers:
 
 [Top 10 Binary Classification Algorithms](https://towardsdatascience.com/top-10-binary-classification-algorithms-a-beginners-guide-feeacbd7a3e2)
+
+## Other resources:
+
+[Pandas and Scikit-Learn for Titanic Dataset](https://www.ritchieng.com/pandas-scikit-learn/)
+[Kaggle Competition Titanic Dataset](https://www.kaggle.com/competitions/titanic/data)

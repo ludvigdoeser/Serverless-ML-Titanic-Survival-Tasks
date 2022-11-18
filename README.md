@@ -14,4 +14,5 @@ Lab in Advanced Scalable Machine Learning course at KTH
 ## Other resources:
 
 [Pandas and Scikit-Learn for Titanic Dataset](https://www.ritchieng.com/pandas-scikit-learn/)
+
 [Kaggle Competition Titanic Dataset](https://www.kaggle.com/competitions/titanic/data)

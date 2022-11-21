@@ -1,4 +1,4 @@
-Survived,Pclass,Age,SibSp,Parch,Sex_male
+survived,pclass,age,sibsp,parch,sex_male
 0,3,22.0,1,0,1
 1,1,38.0,1,0,0
 1,3,26.0,0,0,0

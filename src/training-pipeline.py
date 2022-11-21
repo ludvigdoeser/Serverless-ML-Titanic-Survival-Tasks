@@ -1,7 +1,8 @@
 import os
 import modal
+import numpy as np
 
-LOCAL=False
+LOCAL=True
 
 if LOCAL == False:
     stub = modal.Stub()
@@ -9,6 +10,17 @@ if LOCAL == False:
     @stub.function(image=image, schedule=modal.Period(days=1), secret=modal.Secret.from_name("scalableML"))
     def f():
         g()
+
+        
+def train_titanic_model(X_train, y_train):
+    print('np.shape(X_train)= ',np.shape(X_train))
+    print('np.shape(y_train)= ',np.shape(y_train))
+    
+    from sklearn.linear_model import LogisticRegression
+    model = LogisticRegression(solver = 'lbfgs')
+    model.fit(X_train, y_train)
+    
+    return model 
         
 def g():
     import hopsworks
@@ -40,29 +52,12 @@ def g():
                                           description="Read from Titanic Survival dataset",
                                           labels=["Survived"],
                                           query=query)    
-
-    # Use one-hot encoding?
-    print(feature_view)
-    """
-    from sklearn.preprocessing import OneHotEncoder
-
-    #creating instance of one-hot-encoder
-    encoder = OneHotEncoder(handle_unknown='ignore')
-
-    #perform one-hot encoding on 'team' column 
-    encoder_df = pd.DataFrame(encoder.fit_transform(df[['team']]).toarray())
-
-    #merge one-hot encoded columns back with original DataFrame
-    final_df = df.join(encoder_df)
-    """
-     
         
     # You can read training data, randomly split into train/test sets of features (X) and labels (y)        
     X_train, X_test, y_train, y_test = feature_view.train_test_split(0.2)
 
     # Train our model with the Scikit-learn K-nearest-neighbors algorithm using our features (X_train) and labels (y_train)
-    model = KNeighborsClassifier(n_neighbors=2)
-    model.fit(X_train, y_train.values.ravel())
+    model = train_titanic_model(X_train, y_train)
 
     # Evaluate model performance using the features from the test set (X_test)
     y_pred = model.predict(X_test)
